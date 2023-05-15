@@ -252,3 +252,5 @@ report <- final %>%
 
 最后是成果展示了。
 
+![ae_table](ae_table.jpg)
+

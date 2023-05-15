@@ -20,7 +20,7 @@ run;
 ```
 那么使用SAS SQL同样也可以进行横向合并。
 使用 DATA Step 的 merge 语句横向合并，是基于 PDV，逐行读取、匹配、输出观测，而 SAS SQL 的逻辑则不同。
-在 [SAS SQL（一）：语法顺序与执行顺序](https://www.jianshu.com/p/d7e247bf64e9) 中提到 SQL 语句的 FROM 是首先执行的语句，而在 FROM 语句执行的过程中，可以认为还有三个步骤。
+在 [SAS SQL（一）：语法顺序与执行顺序](https://aqlife.netlify.app/post/sas/sas-sql-1/) 中提到 SQL 语句的 FROM 是首先执行的语句，而在 FROM 语句执行的过程中，可以认为还有三个步骤。
 1. cartesian product，笛卡尔积
 2. on，on 用于 key variable 匹配
 3. outerjoin，外部连接
