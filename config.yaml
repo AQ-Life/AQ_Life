@@ -1,20 +1,27 @@
-baseURL: http://localhost:1313/
-title: Jane - A super concise theme for Hugo
+baseURL: https://aqlife.netlify.app/
+title: 阿Q Life - Going forwrad, towards your destination
 enableRobotsTXT: yes
 enableEmoji: yes
 theme: hugo-theme-jane
 hasCJKLanguage: yes
-paginate: 3
+paginate: 10
 rssLimit: 20
 disqusShortname: ''
 googleAnalytics: ''
-copyright: ''
-defaultContentLanguage: en
+copyright: '阿Q Life'
+
+# Highlight options. See https://gohugo.io/content-management/syntax-highlighting/
+PygmentsCodeFences: yes # Enable syntax highlighting with GitHub flavoured code fences
+PygmentsUseClasses: yes # Use CSS classes to format highlighted code
+PygmentsCodefencesGuessSyntax: yes
+PygmentsOptions: "linenos=table"
+
+defaultContentLanguage: zh-cn
 languages:
-  en:
-    languageCode: en
+  zh-cn:
+    languageCode: zh-cn
 author:
-  name: xianmin
+  name: 阿Q
   url: /about
 sitemap:
   changefreq: weekly
@@ -23,7 +30,7 @@ sitemap:
 menu:
   main:
     - identifier: home
-      name: This is Home
+      name: Home
       pageref: /
       weight: 10
     - identifier: archives
@@ -38,8 +45,8 @@ menu:
       name: Categories
       pageref: /categories/
       weight: 40
-    - name: external-link
-      pageref: https://gohugo.io
+    - name: Reference
+      pageref: /reference
       weight: 50
 params:
   contentCopyright: <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
@@ -47,36 +54,26 @@ params:
   customCSS: []
   customJS: []
   dateFormatToUse: '2006-01-02'
-  description: Hugo theme jane example site.
+  description: Going forwrad, towards your destination
   homeFullContent: no
   keywords:
     - Hugo
     - theme
     - jane
-  logoTitle: Jane
+  logoTitle: 阿Q
+  archive-paginate: 50
+  moreMeta: yes
   photoswipe: yes
   rssFullContent: yes
   since: '2017'
+  gitment:
+    owner: ''
+    repo: ''
+    clientId: ''
+    clientSecret: ''
   social:
-    a-email: mailto:your@email.com
-    b-stack-overflow: http://localhost:1313
-    c-twitter: http://localhost:1313
-    d-facebook: http://localhost:1313
-    e-linkedin: http://localhost:1313
-    f-google: http://localhost:1313
-    g-github: http://localhost:1313
-    h-weibo: http://localhost:1313
-    i-zhihu: http://localhost:1313
-    j-douban: http://localhost:1313
-    k-pocket: http://localhost:1313
-    l-tumblr: http://localhost:1313
-    m-instagram: http://localhost:1313
-    n-gitlab: http://localhost:1313
-    o-goodreads: http://localhost:1313
-    p-coding: http://localhost:1313
-    q-bilibili: http://localhost:1313
-    r-codeforces: http://localhost:1313
-    s-mastodon: http://localhost:1313
-    t-youtube: http://localhost:1313
-    u-twitch: http://localhost:1313
+    a-email: qi_luo2020@163.com
+    g-github: https://github.com/AQ-Life/AQ_Life
+    k-pocket: https://aqlife.netlify.app/
   toc: yes
+  
