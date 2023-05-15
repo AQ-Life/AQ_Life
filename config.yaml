@@ -1,0 +1,82 @@
+baseURL: http://localhost:1313/
+title: Jane - A super concise theme for Hugo
+enableRobotsTXT: yes
+enableEmoji: yes
+theme: hugo-theme-jane
+hasCJKLanguage: yes
+paginate: 3
+rssLimit: 20
+disqusShortname: ''
+googleAnalytics: ''
+copyright: ''
+defaultContentLanguage: en
+languages:
+  en:
+    languageCode: en
+author:
+  name: xianmin
+  url: /about
+sitemap:
+  changefreq: weekly
+  filename: sitemap.xml
+  priority: 0.5
+menu:
+  main:
+    - identifier: home
+      name: This is Home
+      pageref: /
+      weight: 10
+    - identifier: archives
+      name: Archives
+      pageref: /post/
+      weight: 20
+    - identifier: tags
+      name: Tags
+      pageref: /tags/
+      weight: 30
+    - identifier: categories
+      name: Categories
+      pageref: /categories/
+      weight: 40
+    - name: external-link
+      pageref: https://gohugo.io
+      weight: 50
+params:
+  contentCopyright: <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    target="_blank">CC BY-NC-ND 4.0</a>
+  customCSS: []
+  customJS: []
+  dateFormatToUse: '2006-01-02'
+  description: Hugo theme jane example site.
+  homeFullContent: no
+  keywords:
+    - Hugo
+    - theme
+    - jane
+  logoTitle: Jane
+  photoswipe: yes
+  rssFullContent: yes
+  since: '2017'
+  social:
+    a-email: mailto:your@email.com
+    b-stack-overflow: http://localhost:1313
+    c-twitter: http://localhost:1313
+    d-facebook: http://localhost:1313
+    e-linkedin: http://localhost:1313
+    f-google: http://localhost:1313
+    g-github: http://localhost:1313
+    h-weibo: http://localhost:1313
+    i-zhihu: http://localhost:1313
+    j-douban: http://localhost:1313
+    k-pocket: http://localhost:1313
+    l-tumblr: http://localhost:1313
+    m-instagram: http://localhost:1313
+    n-gitlab: http://localhost:1313
+    o-goodreads: http://localhost:1313
+    p-coding: http://localhost:1313
+    q-bilibili: http://localhost:1313
+    r-codeforces: http://localhost:1313
+    s-mastodon: http://localhost:1313
+    t-youtube: http://localhost:1313
+    u-twitch: http://localhost:1313
+  toc: yes
