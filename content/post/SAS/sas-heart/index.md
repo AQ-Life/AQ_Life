@@ -16,7 +16,7 @@ tags:
 
 ## 准备数据
 下面绘制心形曲线的函数是来源于广大的网友，我们再按照函数生成一系列的模拟数据。
-```
+```SAS
 data heart;
 	pi=constant('PI');
 	do t=0 to 65 by 100/400;
@@ -31,7 +31,7 @@ run;
 
 ## 定制GTL template
 常见的是scatterplot绘制散点图，来描绘心形曲线。
-```
+```SAS
 ods path(prepend) work.templat(update);
 
 proc template;
@@ -46,7 +46,7 @@ run;
 ```
 ## 绘制动态爱心曲线
 SAS绘制动态曲线，主要是通过options animate=start;与options animate=stop; 这里的动态图就是多张静态图汇集而成的，我们再通过控制帧数等参数达到动态图的效果。
-```
+```SAS
 title; footnote;
 options noxwait missing='';
 options printerpath=gif nonumber nodate animduration=0.001 animloop=yes nobyline;

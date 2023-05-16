@@ -13,7 +13,7 @@ title: SAS SQL（一）：语法顺序与执行顺序
 
 
 SAS 语言吸纳了很多其他编程语言的优势，比如 SQL procedure，在 SAS 当中也可以使用 SQL 进行增删查改。SQL procedure 一般的语法结构如下。
-```
+```SAS
 PROC SQL;
     SELECT *
     FROM table1

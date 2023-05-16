@@ -12,7 +12,7 @@ title: SAS SQL（二）：横向合并的逻辑
 ---
 
 学习SAS语法，需要进行数据集的横向合并，首先接触到的都是 Merge 语句，常见用法如下。
-```
+```SAS
 data combine_dataset;
     merge dataset1 dataset2;
     by key_variable;
@@ -26,7 +26,7 @@ run;
 3. outerjoin，外部连接
 
 我们运行如下程序。
-```
+```SAS
 data dataset1;
 	input id1 $ score1;
 	cards;

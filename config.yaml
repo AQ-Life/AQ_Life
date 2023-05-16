@@ -20,6 +20,8 @@ defaultContentLanguage: zh-cn
 languages:
   zh-cn:
     languageCode: zh-cn
+  en:
+    languageCode: en
 author:
   name: 阿Q
   url: /about
@@ -49,23 +51,28 @@ menu:
       pageref: /reference
       weight: 50
 params:
-  contentCopyright: <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
-    target="_blank">CC BY-NC-ND 4.0</a>
-  customCSS: []
-  customJS: []
+  contentCopyright: 原创文章，如需转载请注明文章作者和出处。谢谢!
+  customCSS: ['custom.css']
+  customJS: ['custom.js']
   dateFormatToUse: '2006-01-02'
   description: Going forwrad, towards your destination
   homeFullContent: no
   keywords:
+    - 阿Q
+    - SAS
+    - programming
+    - blog
     - Hugo
     - theme
     - jane
   logoTitle: 阿Q
-  archive-paginate: 50
+  archive-paginate: 1000
+  comment: true
+  mathjax: true
   moreMeta: yes
   photoswipe: yes
   rssFullContent: yes
-  since: '2017'
+  since: '2023'
   gitment:
     owner: ''
     repo: ''
@@ -76,4 +83,6 @@ params:
     g-github: https://github.com/AQ-Life/AQ_Life
     k-pocket: https://aqlife.netlify.app/
   toc: yes
+  fancybox: yes
+  linkToMarkDown: false
   

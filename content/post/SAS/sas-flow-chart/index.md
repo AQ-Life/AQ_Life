@@ -2,8 +2,6 @@
 categories:
 - SAS
 - FlowChart
-contentCopyright: <a href="https://github.com/gohugoio/hugoBasicExample" rel="noopener"
-  target="_blank">See origin</a>
 date: '2021-12-13'
 draft: false
 lastmod: "2021-12-13"
@@ -18,7 +16,7 @@ title: SAS绘制流程图
 CSR中的第一张表格往往会是一张流程图，那么使用SAS如何绘制流程图，我们一起来看看。
 
 SAS ANNOTATION FUNCTIONS:
-```
+```SAS
 %annomac;
 ```
 |Macro to use|Tasks|
@@ -60,7 +58,7 @@ position: specifies the placement and alignment
 
 ![position](images/position.png)
 
-```
+```SAS
 %macro add_element(x=,y=,width=,height=,text=);
  %rect(&x,&y,&x+&width,&y+&height,black,1,1);
  %let i=1;
