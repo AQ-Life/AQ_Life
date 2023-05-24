@@ -11,6 +11,7 @@ categories:
 - ggplot2
 ---
 
+
 COVID-19 的病例数据来源于[COVID-19 (coronavirus) by Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data)，并通过 OWID data 绘制一张新冠肺炎新增病例的趋势图。
 
 
@@ -98,6 +99,7 @@ p + theme(panel.background=element_rect(fill='transparent',
                                 color='transparent'))
 ```
 
-![unnamed-chunk-5-1](index_files/figure-html/unnamed-chunk-5-1.png)
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+
 
 最后展示一下输出的plot，如上图所示。

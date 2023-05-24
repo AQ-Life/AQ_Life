@@ -1,0 +1,107 @@
+---
+title: "R 输出 GMT plot"
+date: "2023-05-24"
+tags:
+- R
+- Tidyverse
+- ggplot2
+categories:
+- R
+- Tidyverse
+- ggplot2
+---
+
+
+```r
+library(plyr)
+library(tidyverse)
+library(haven)
+library(scales)
+```
+
+
+
+
+```r
+adis <- read_sas("adis.sas7bdat")
+
+adis1 <- adis %>% 
+  filter(IPPSFL == "Y", PARAMCD == "SAR2NAB", ANL01FL == "Y", COHORT == "Cohort 2") %>% 
+  mutate(TPTN = case_when(AVISITN == 0 ~ 1+(TRTAN-1)*2,
+                          AVISITN %in% c(28, 42) ~ 2+(TRTAN-1)*2,
+                          AVISITN %in% c(120, 150) ~ 3+(TRTAN-1)*2,
+                          AVISITN %in% c(148, 178) ~ 4+(TRTAN-1)*2),
+         LOGAVAL = log10(AVAL),
+         LOGFOLD = log10(AVAL/BASE)
+           ) 
+
+mean1 <- adis1 %>% 
+  group_by(TRTAN, TPTN, AVISITN) %>% 
+  select(TRTAN, TPTN, AVISITN, LOGAVAL, LOGFOLD) %>% 
+  dplyr::summarise(n = n(),
+            mean1 = mean(LOGAVAL),
+            mean2 = mean(LOGFOLD),
+            sd1 = sd(LOGAVAL),
+            sd2 = sd(LOGFOLD)) %>% 
+  mutate(se = sd1/sqrt(n),
+         lclm = mean1 - 1.96 * se,
+         uclm = mean1 + 1.96 * se,
+         yerrl = 10**lclm,
+         yerru = 10**uclm,
+         means = 10**mean1,
+         foldmean = ifelse(AVISITN != 0,10**mean2, NA),
+         nlabel = str_c("(N=",as.character(n),")"),
+         foldlabel = str_c(as.character(round(foldmean,1)),"x"),
+         ymin = 10^5*1.5,
+         ymax = 10^5*2)
+
+final <- rbind.fill(adis1, mean1)
+```
+
+
+
+
+```r
+ggplot(final) +
+  geom_col(aes(x = TPTN, y = means, fill = factor(TRTAN)), alpha = 0.3, na.rm = TRUE)+
+  geom_jitter(aes(x = TPTN, y = AVAL, color = factor(TRTAN)), na.rm = TRUE)+
+  geom_errorbar(aes(x = TPTN, ymin = yerrl, ymax = yerru), width = .5, size = 0.5)+
+  geom_text(aes(x = TPTN, y = 10^5, label = as.character(round(means))), na.rm = TRUE, family = "WRYH", fontface = "bold", size = 4)+
+  geom_text(aes(x = TPTN, y = 0.25, label = nlabel), na.rm = TRUE, family = "WRYH", fontface = "bold", size = 4)+
+  geom_text(aes(x = TPTN - 0.5, y = 10^5*3, label = foldlabel), na.rm = TRUE, family = "WRYH", fontface = "bold", size = 4)+
+  geom_linerange(aes(x = TPTN, ymin = ymin, ymax = ymax), na.rm = TRUE)+
+  geom_linerange(aes(xmin = 1, xmax = 2, y = 10^5*2))+
+  geom_linerange(aes(xmin = 3, xmax = 4, y = 10^5*2))+
+  geom_linerange(aes(xmin = TPTN - 0.1, xmax = TPTN + 0.1, y = means), linewidth = 0.5, na.rm = TRUE)+
+  geom_vline(xintercept = 2.5, linetype = "f8", alpha = 0.4)+
+  theme_classic()+
+  annotation_logticks(sides = "l")+
+  scale_y_log10(breaks = 10^(0:5),
+               #labels=trans_format("log10", math_format(10^.x)),
+               label = c(expression(bold("10"^"0")), expression(bold("10"^"1")), expression(bold("10"^"2")), expression(bold("10"^"3")), expression(bold("10"^"4")), expression(bold("10"^"5"))),
+               expand = c(0, 0))+
+  scale_x_continuous(breaks = seq(1, 4, by = 1),
+                     labels = c("D0 ", "D28", "D0 ", "D28"))+
+  labs(y = "PRNT50 Titer", x = NULL)+
+  scale_fill_manual(values = c("grey", "blue"),
+                    guide = "none")+
+  scale_color_manual(values = c("grey", "blue"),
+                    label = c("SCTV01E", "SCTV01E-1")) +
+  theme(legend.title = element_blank(),
+        panel.grid = element_blank(),
+        text = element_text(family = "WRYH", 
+                            face = "bold",
+                            color = "black",
+                            size = 12),
+        axis.text = element_text(family = "ArialUnicode",
+                                 face = "bold",
+                                 color = "black",
+                                 size = 12),
+        line = element_line(color = "black"),
+        plot.margin = unit(c(2,0,1,0.5),"lines")
+        )+
+  coord_cartesian(ylim = c(1, 100000),
+                  clip = "off")
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
