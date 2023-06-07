@@ -1,6 +1,6 @@
 ---
-title: "R 输出 GMT plot"
-date: "2023-05-24"
+title: "R 输出GMT plot"
+date: "2023-05-25"
 tags:
 - R
 - Tidyverse
@@ -11,17 +11,16 @@ categories:
 - ggplot2
 ---
 
-```{r message=FALSE, warning=FALSE}
 
+
+
+
+
+```r
 library(plyr)
 library(tidyverse)
 library(haven)
 library(scales)
-```
-
-
-
-```{r message=FALSE, warning=FALSE}
 
 adis <- read_sas("adis.sas7bdat")
 
@@ -60,8 +59,8 @@ final <- rbind.fill(adis1, mean1)
 
 
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
 
+```r
 ggplot(final) +
   geom_col(aes(x = TPTN, y = means, fill = factor(TRTAN)), alpha = 0.3, na.rm = TRUE)+
   geom_jitter(aes(x = TPTN, y = AVAL, color = factor(TRTAN)), na.rm = TRUE)+
@@ -102,5 +101,7 @@ ggplot(final) +
         )+
   coord_cartesian(ylim = c(1, 100000),
                   clip = "off")
-
 ```
+
+![GMT plot](index_files/figure-html/unnamed-chunk-2-1.png)
+
