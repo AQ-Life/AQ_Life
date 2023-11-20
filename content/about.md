@@ -18,3 +18,6 @@ weight: 60
 
 R shiny app:
 * [AQ_TFLs_Generation](https://aqlife.shinyapps.io/aq_tfls_generation/)
+
+Published papers:
+* [Generation of Geometric Mean Titer Plot in Immunogenicity from SAS and R](https://www.lexjansen.com/pharmasug-cn/2023/CC/Pharmasug-China-2023-CC115.pdf)
